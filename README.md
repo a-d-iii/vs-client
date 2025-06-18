@@ -51,13 +51,13 @@ Clone the repository and build the Kotlin library with Gradle:
 
 ```bash
 git clone https://github.com/Udhay-Adithya/vitap-vtop-client.git
-cd vitap-vtop-client
+cd vitap-vtop-client 
 ./gradlew :student-scraper:assembleRelease
 ```
 
 If `gradle-wrapper.jar` is missing on first run, install Gradle and execute
 `gradle wrapper` to generate it before running `./gradlew`.
-
+ 
 The compiled AAR and JAR will be located under `student-scraper/build/outputs/aar`.
 
 ## Quick Start
