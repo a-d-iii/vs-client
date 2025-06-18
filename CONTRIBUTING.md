@@ -1,7 +1,7 @@
 
-# Contributing to vitap-vtop-client
+# Contributing to portal-explorer
 
-Thank you for your interest in contributing to the `vitap-vtop-client` library! Your help is valuable in maintaining and enhancing this tool for interacting with the VIT-AP VTOP portal.
+Thank you for your interest in contributing to the `portal-explorer` library! Your help is valuable in maintaining and enhancing this tool for interacting with the VIT-AP VTOP portal.
 
 Web scraping projects like this are sensitive to changes in the target website. Contributions that help update the scraping logic, parsers, or fix issues caused by VTOP updates are especially appreciated.
 
@@ -12,9 +12,9 @@ This project and everyone participating in it is governed by the [Contributor Co
 ## How Can I Contribute?
 
 ### Reporting Bugs
-If you find a bug, please ensure the bug was not already reported by searching on GitHub under [Issues](https://github.com/Udhay-Adithya/vitap-vtop-client/issues).
+If you find a bug, please ensure the bug was not already reported by searching on GitHub under [Issues](https://github.com/Udhay-Adithya/portal-explorer/issues).
 
-If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/Udhay-Adithya/vitap-vtop-client/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample or an executable test case** demonstrating the expected behavior that is not occurring.
+If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/Udhay-Adithya/portal-explorer/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample or an executable test case** demonstrating the expected behavior that is not occurring.
 
 Provide the following information:
 - Your operating system name and version.
@@ -36,14 +36,14 @@ Pull Requests (PRs) are the primary way to contribute code to this project.
 
 1.  **Fork the repository**: 
 
-    Click the "Fork" button at the top right of the [repository page](https://github.com/Udhay-Adithyavitap-vtop-client).
+    Click the "Fork" button at the top right of the [repository page](https://github.com/Udhay-Adithyaportal-explorer).
 
 
 2.  **Clone your fork**: 
 
 
 ```bash
-git clone https://github.com/your-name/vitap-vtop-client.git
+git clone https://github.com/your-name/portal-explorer.git
 ```
 
 
@@ -75,8 +75,8 @@ To set up the project for local development:
 
 1. **Clone the repository** (if you haven't already forked and cloned):
     ```bash
-    git clone https://github.com/your-name/vitap-vtop-client.git
-    cd vitap-vtop-client  # Fixed directory name to match repository
+    git clone https://github.com/your-name/portal-explorer.git
+    cd portal-explorer  # Fixed directory name to match repository
     ```
 
 2. **Set up Python virtual environment** (optional):
