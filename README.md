@@ -20,9 +20,9 @@
 </p>
 <br>
 
-`vitap-vtop-client` is a Python library providing a programmatic interface for interacting with the VIT-AP VTOP student portal. It simplifies web scraping, session management, CAPTCHA handling, and HTML parsing, offering structured access to student information.
+`vitap-vtop-client` is a minimal Kotlin library for scraping the VIT‑AP VTOP portal. It handles login, CAPTCHA solving, and HTML parsing so your Android app can access attendance, marks, and timetable data with just one suspending call.
 
-This library is designed as a backend component for applications needing VTOP data, such as mobile apps, web services, or analytical tools.
+The library is intended for use as a small backend component inside other apps or services that require VTOP data.
 
 **Disclaimer:** Use this library responsibly and in accordance with VIT-AP's terms of service. Web scraping is subject to changes in the target website's structure, which may occasionally affect the library's functionality.
 
@@ -47,45 +47,40 @@ This library is designed as a backend component for applications needing VTOP da
 
 ## Installation
 
-If you want to use `vitap-vtop-client` in your project, you can install it directly from GitHub.
-
-**Using `pip` (recommended for adding to `requirements.txt`):**
+Clone the repository and build the Kotlin library with Gradle:
 
 ```bash
-pip install git+https://github.com/Udhay-Adithya/vitap-vtop-client.git@main
+git clone https://github.com/Udhay-Adithya/vitap-vtop-client.git
+cd vitap-vtop-client
+./gradlew :student-scraper:assembleRelease
 ```
 
-**Using `poetry`:**
+If `gradle-wrapper.jar` is missing on first run, install Gradle and execute
+`gradle wrapper` to generate it before running `./gradlew`.
 
-```bash
-poetry add git+https://github.com/Udhay-Adithya/vitap-vtop-client.git@main
-```
+The compiled AAR and JAR will be located under `student-scraper/build/outputs/aar`.
 
 ## Quick Start
 
-Here's a basic example of how to log in and fetch attendance data:
+Here's a basic example of how to fetch all data inside a coroutine:
 
-```python
-import asyncio
-from vitap_vtop_client.client import VtopClient
-from vitap_vtop_client.exceptions import VitapVtopClientError, VtopLoginError
-
-async def main():
-async with VtopClient("your_registration_number", "your_password", timeout=60.0) as client:
-        try:
-            fall_sem_2024_25 = "AP2024252"
-            attendance_data = await client.get_attendance(sem_sub_id=fall_sem_2024_25)
-            print(attendance_data)
-
-        except VtopLoginError as e:
-            print(f"A login-specific error occurred: {e}")
-        except VitapVtopClientError as e:
-            print(f"A client error occurred: {e}")
-        except Exception as e:
-            print(f"An unexpected error occurred: {e}")
-
-if __name__ == "__main__":
-    asyncio.run(main())
+```kotlin
+suspend fun demo() {
+    val scraper = StudentScraperImpl()
+    val result = scraper.fetchAll(
+        Credentials(regNo = "YOUR_REGNO", dob = "01-01-2000", password = "PASS"),
+        captchaSolver = object : CaptchaSolver {
+            override suspend fun solve(imageBase64: String): String {
+                // Call your captcha API
+                return "abcd"
+            }
+        }
+    )
+    when (result) {
+        is ScrapeResult.Success -> println(result.data)
+        is ScrapeResult.Failure -> println("Error: ${'$'}{result.message}")
+    }
+}
 ```
 
 ## Documentation
