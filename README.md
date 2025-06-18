@@ -71,7 +71,7 @@ from vitap_vtop_client.client import VtopClient
 from vitap_vtop_client.exceptions import VitapVtopClientError, VtopLoginError
 
 async def main():
-    async with VtopClient("your_registration_number", "your_password") as client:
+async with VtopClient("your_registration_number", "your_password", timeout=60.0) as client:
         try:
             fall_sem_2024_25 = "AP2024252"
             attendance_data = await client.get_attendance(sem_sub_id=fall_sem_2024_25)
