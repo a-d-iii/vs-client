@@ -5,3 +5,6 @@ poetry.lock
 .devenv
 devenv.lock
 .devenv.flake.nix
+.gradle/
+**/build/
+gradle/wrapper/gradle-wrapper.jar
