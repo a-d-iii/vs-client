@@ -102,7 +102,7 @@ The main class for interacting with VTOP.
 ```python
 from vitap_vtop_client.client import VtopClient
 Constructor
-VtopClient(username: str, password: str, max_login_retries: int = 3, captcha_retries: int = 5)
+VtopClient(username: str, password: str, max_login_retries: int = 3, captcha_retries: int = 5, timeout: float = 30.0)
 ```
 
 #### `get_attendance(sem_sub_id: str)`

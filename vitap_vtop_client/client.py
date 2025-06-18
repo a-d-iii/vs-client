@@ -57,15 +57,17 @@ class VtopClient:
         password: str,
         max_login_retries: int = 3,
         captcha_retries: int = 5,
+        timeout: float = 30.0,
     ):
         """
         Initializes the VtopClient.
 
         Args:
-            uregistration_numbersername: The VTOP registration number.
+            registration_number: The VTOP registration number.
             password: The VTOP password.
             max_login_retries: Maximum number of overall login attempts.
             captcha_retries: Maximum number of captcha fetch/solve attempts per login.
+            timeout: HTTP timeout in seconds for all requests.
         """
         if not registration_number or not password:
             raise VtopLoginError(
@@ -77,7 +79,7 @@ class VtopClient:
         self.username = registration_number.upper()
         self.password = password
         self._client = httpx.AsyncClient(
-            timeout=30.0, follow_redirects=True, base_url=VTOP_BASE_URL
+            timeout=timeout, follow_redirects=True, base_url=VTOP_BASE_URL
         )
         self._logged_in_student: LoggedInStudent | None = None
         self.max_login_retries = max_login_retries
